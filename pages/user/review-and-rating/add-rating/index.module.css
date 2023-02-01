@@ -1,0 +1,62 @@
+.profileWrapper {
+  border-bottom: 1px solid #e2d6d6;
+}
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--title-color);
+}
+.detailCard {
+  padding: 20px 0;
+}
+.addressDetail h4 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--input-color);
+}
+.addressDetail p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #7a8187;
+  margin-bottom: 0;
+}
+.Link {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #198a17;
+}
+.Input input {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+}
+.customInput {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #d2c4c4;
+  border-radius: 3px;
+  top: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-white);
+}
+.error {
+  font-size: 12px;
+  width: 126px;
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+.NewsLetterSection {
+  background: #b1a896;
+  padding: 60px 0;
+  color: var(--color-white);
+}
+.searchForm {
+  width: 430px;
+  max-width: 100%;
+}

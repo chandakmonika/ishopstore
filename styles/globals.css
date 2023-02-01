@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-grey: #f4f2f1;
+  --border-color: #ece2e2;
+  --color-mid-black: #33383d;
+  --color-grey: #3c4043;
+  --border-grey: #b4afa5;
+  --btn-border-grey: #d7cfcf;
+  --product-btn-color: #5f6366;
+  --or-color: #7d8388;
+  --svg-color: #bebcbc;
+  --title-color: #3e454b;
+  --input-color: #5e6468;
+  --link-color: #016fd0;
+  --color-green: #129a40;
+  --color-black-light: #2a2e31;
+  --color-green-light: #0eb062;
+  --color-red: #ed0006;
+
+  --nav-height: 120px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-layout {
+  overflow-x: hidden;
+}
+input {
+  border-color: #d3c9b9 !important;
+  border-radius: 3px !important;
+  height: 40px;
+}
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+label {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 27px;
+  color: #343e42;
+}
+.form-check-input[type='radio'] {
+  border-radius: 50% !important;
+}
+.accordion-item:not(:first-of-type) {
+  border-top: 1px solid#E3E8ED;
+}
+.navigation-items .nav-link.active {
+  font-weight: 500;
+}
+.navigation-items .nav-link {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #71685a;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: '' !important;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+}
+.swiper-button-prev::after {
+  background-image: url('/images/back.svg');
+}
+.swiper-button-next::after {
+  background-image: url('/images/next.svg');
+}
+
+.list-group {
+  border: 0;
+  border-radius: 0;
+}
+.wrapper .list-group-item {
+  display: grid;
+  grid-template-columns: 17% 83%;
+  place-content: center;
+  align-items: center;
+}
+.profile-list-card .list-group-item {
+  border: 0;
+  border-bottom: 1px solid #e4dbcc;
+  padding: 1rem 1rem;
+}
+.profile-list-card .list-group-item:last-child {
+  border-bottom: 0 !important;
+}
+.custom-checkbox .form-check-input {
+  padding: 0 !important;
+  border-radius: 50%;
+}
+.accordion-item {
+  border: 0;
+  background: none;
+}
+.accordion-button {
+  background: none !important;
+  border: 0;
+  box-shadow: none !important;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  color: #323436 !important;
+  padding: 0.5rem 0.5rem;
+}
+.accordion-body {
+  padding: 0.5rem 1rem;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: var(--bs-accordion-btn-icon) !important;
+  margin-top: -4px;
+}
+.accordion-button::after {
+  background-size: 16px;
+  margin-top: 4px;
+}
+.form-check-input[type='checkbox'] {
+  border-radius: 0 !important;
+}
+.custom-checkbox .form-check-input:checked {
+  background: var(--color-white) !important;
+  border-color: #5a6268 !important;
+}
+.custom-checkbox .form-check-input:checked[type='checkbox'] {
+  background-image: url(/images/done.svg) !important;
+  background-repeat: no-repeat !important;
+}
+.custom-checkbox .form-check-input {
+  height: 18px;
+  width: 20px;
+}
+.progress {
+  width: 100%;
+  border-radius: 0;
+  background: #dee7ef;
+  height: 8px;
+}
+.bg-success {
+  background-color: var(--color-green-light) !important;
+}
+.bg-danger {
+  background-color: var(--color-red) !important;
+}
+.address-radio .form-check-input:checked[type='radio'] {
+  background-image: url(/images/green-round.svg) !important;
+  background-repeat: no-repeat !important;
+}
+.address-radio .form-check-input:checked {
+  background-color: #fff;
+  border-color: #109445;
+}
+.accordion-border:has(.show) {
+  border: 2px solid var(--color-green);
+  padding-bottom: 30px;
+}
+.modal-accordion .accordion-header button {
+  font-weight: 400;
+  font-size: 18px;
+  color: #5a6266 !important;
+}
+.custom-nav-link.active {
+  background-color: #f9f9f9;
+  border-right: 2px solid #bfc2c3;
+}

@@ -1,0 +1,91 @@
+.headTitle h3 {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 27px;
+  color: #343e42;
+}
+.headTitle h3 span {
+  color: #707a7e;
+  font-size: 20px;
+  font-weight: 400;
+}
+.header {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: #5a6266;
+  border-bottom: 1px solid #d3c9b9;
+}
+.list {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #4b5255;
+}
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #8a9194;
+}
+.free {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #029d24;
+}
+.total {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: #41494d;
+}
+.totalRate {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--color-black);
+}
+.ulList li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3c9b9;
+  padding: 8px 0;
+}
+.minOdrBtn {
+  background: #fbfd89 !important;
+  border: 1px solid #d3c9b9 !important;
+  border-radius: 3px;
+  height: 60px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #635858 !important;
+}
+.checkoutBtn {
+  background: #feb164 !important;
+  border-radius: 3px !important;
+  border: 0 !important;
+  height: 60px;
+  color: var(--color-white) !important;
+}
+.widthBox {
+  width: 280px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #343e42;
+}
+.addNew {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
+  color: #343e42;
+}

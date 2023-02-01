@@ -1,0 +1,45 @@
+.HeroBanner {
+  background-color: #eff0ee;
+  display: flex;
+  align-items: center;
+  /* background-image: url(/images/banner.png); */
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 600px;
+}
+.imageDiv {
+  width: 100%;
+}
+.Content h1 {
+  font-weight: 500;
+  font-size: 66px;
+  line-height: 76px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "Vollkorn SC", serif !important;
+}
+.Content h3 {
+  font-size: 66px;
+  line-height: 76px;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 600px) {
+  .HeroBanner {
+    padding: 60px 0;
+  }
+  .Content {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .Content h1 {
+    font-size: 34px;
+    line-height: 50px;
+  }
+  .Content h3 {
+    font-size: 34px;
+    line-height: 50px;
+  }
+}

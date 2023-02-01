@@ -1,0 +1,21 @@
+.productCategorySection {
+  background-color: #ececec;
+}
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+.productTitle {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 38px;
+  letter-spacing: -0.02em;
+}
+@media screen and (max-width: 576px) {
+  .productTitle {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

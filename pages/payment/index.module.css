@@ -1,0 +1,43 @@
+.paymentSection {
+  padding: 60px 0;
+}
+.list ul {
+  padding-left: 0;
+}
+.list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #525b63;
+  border-bottom: 0;
+}
+.list li:active {
+  background-color: #dadada;
+}
+
+.list li:last-child {
+  border-bottom: 1px solid #525b63;
+  transition: 0ms;
+}
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #525b63;
+}
+.rightData {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+}
+@media screen and (max-width: 991px) {
+  .payment {
+    display: none;
+  }
+  .paycards {
+    display: none;
+  }
+}

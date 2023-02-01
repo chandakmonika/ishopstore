@@ -1,0 +1,31 @@
+.carousel-nav-buttons {
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.carousel-prev {
+  background-image: url('/images/back.svg');
+  left: -50px;
+}
+.carousel-next {
+  background-image: url('/images/next.svg');
+  right: -80px;
+}
+
+@media screen and (max-width: 576px) {
+  .carousel-prev {
+    left: 0;
+  }
+  .carousel-next {
+    right: 0;
+  }
+}

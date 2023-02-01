@@ -1,0 +1,16 @@
+.rate ~ img {
+  width: 16px;
+  height: 16px;
+}
+.rate {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-black);
+}
+.percent {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-black);
+}

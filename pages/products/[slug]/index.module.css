@@ -1,0 +1,190 @@
+.productName {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+  color: var(--color-black-light);
+}
+.ratingReview {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-black-light);
+}
+.special {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #278e0d;
+}
+.price {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--color-black-light);
+}
+.orgPrice {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2b2f33;
+  text-decoration: line-through;
+}
+.variantDiv .variant {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #414641;
+}
+.variantDiv span {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #4f5750;
+}
+.desc h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #414641;
+}
+.desc p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-black-light);
+}
+
+.header {
+  padding: 10px;
+  border-bottom: 1px solid #e5d8d8;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #414641;
+}
+.listUl {
+  padding: 10px;
+  list-style: none;
+}
+.listUl li {
+  display: flex;
+  margin-bottom: 10px;
+}
+.listUl li span {
+  width: 200px;
+}
+.listUl li .name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #434843;
+}
+.listUl li .content {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+.progressBar {
+  width: 50%;
+}
+.ratingTag {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #414641;
+}
+.ratingHead h2 {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 75px;
+  color: #434843;
+}
+.ratingHead p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: #829283;
+}
+
+.questionHeadDiv {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 38px;
+  color: #414641;
+  padding: 10px;
+  border-bottom: 1px solid #e5d8d8;
+}
+.rateBtn {
+  background: #e4e5e6;
+  border-radius: 3px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #3c4043;
+  padding: 16px 12px;
+  border: 1px solid var(--border-color);
+}
+.addToCart {
+  background: #0081f9;
+  border-radius: 3px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--color-white);
+  border: 0;
+  width: 50%
+}
+.buyNow {
+  background: #ffb41a;
+  border-radius: 3px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--color-white);
+  border: 0;
+  width: 50%
+}
+
+.topImageCard {
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+.topImageCard .icon {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.topImageCard .image img {
+  width: 340px;
+  height: 340px;
+  object-fit: contain;
+}

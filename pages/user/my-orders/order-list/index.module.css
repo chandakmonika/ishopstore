@@ -1,0 +1,36 @@
+.detailCard {
+  cursor: pointer;
+}
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3c4043;
+}
+.addressDetail h5 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #525b63;
+  margin-bottom: 0;
+}
+.addressDetail p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #525b63;
+  margin-bottom: 0;
+}
+.addressDetail .rate {
+  font-weight: 500 !important;
+}
+.progress {
+  color: #f9a000 !important;
+}
+.dispatch {
+  color: #016fd0 !important;
+}
+.complete {
+  color: #0fa938 !important;
+}

@@ -1,0 +1,83 @@
+.filterDiv h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.filters {
+  background: #dfe9e4;
+  border-radius: 3px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  color: #3c474f;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 100%;
+  padding: 10px;
+}
+.categoryDiv h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3c474f;
+}
+.categoryDiv ul {
+  padding-left: 0;
+}
+.categoryDiv li {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  color: #323436;
+  list-style: none;
+  margin-bottom: 10px;
+}
+.itemPrice {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin: 0px 10px;
+}
+.rangeLine {
+  margin-bottom: 20px;
+}
+.maxPrices {
+  display: flex;
+  margin-bottom: 20px;
+}
+.maxPrices h6 {
+  padding: 0px 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.searchItem input:focus-visible {
+  outline: none !important;
+}
+.checkBox {
+  display: flex;
+  flex-direction: column;
+}
+.close {
+  cursor: pointer;
+}
+

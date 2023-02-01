@@ -1,0 +1,39 @@
+.Form label {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-grey);
+}
+.Form input {
+  background: var(--color-white);
+  border: 1px solid var(--border-grey);
+  border-radius: 3px;
+  padding: 0.775rem 0.75rem;
+}
+.Form button {
+  width: 100%;
+}
+.otherLogin {
+  background: var(--color-white);
+  border: 1px solid var(--btn-border-grey);
+  border-radius: 3px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--color-grey);
+}
+.otherLogin:hover {
+  border: 1px solid var(--btn-border-grey) !important;
+}
+.otherText {
+  font-weight: 400;
+  font-size: 21px;
+  color: var(--product-btn-color);
+}
+.or {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--or-color);
+}

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
+
+.ctaSection {
+  background: linear-gradient(180deg, #4d3566 0%, #9d67d2 100%);
+  color: var(--color-white);
+  padding: 20px 30px;
+}
+.image img {
+  /* width: 100%; */
+  max-width: 100%;
+}
+
+.Content {
+  font-family: 'Princess Sofia', cursive;
+  padding: 10px;
+}
+.Content p {
+  font-family: Poppins;
+}
+.button {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 600px) {
+  .ctaRow {
+    justify-content: center !important;
+    text-align: center;
+  }
+}

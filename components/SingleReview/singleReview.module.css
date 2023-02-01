@@ -1,0 +1,13 @@
+.ratingTag {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #414641;
+}
+.singleReview p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-black-light);
+  margin-top: 10px;
+}

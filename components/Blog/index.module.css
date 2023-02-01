@@ -1,0 +1,30 @@
+.cards {
+  padding: 20px;
+  border: 1px solid #e5dfdf;
+  border-radius: 6px;
+}
+.date {
+  font-size: 14px;
+}
+.about {
+  font-size: 16px;
+  line-height: 25px;
+}
+.read_more {
+  display: flex;
+  justify-content: flex-end;
+  color: #7e7f8d;
+}
+.blog_image {
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  height: 183.98px;
+}
+.blog_title {
+  font-weight: 600;
+}
+.blog_image img {
+  width: 100%;
+  object-fit: contain;
+}

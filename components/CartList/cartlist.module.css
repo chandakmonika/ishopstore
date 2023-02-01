@@ -1,0 +1,75 @@
+.addCartBtn button {
+  background: var(--color-green);
+  border-radius: 5px;
+  color: var(--color-white);
+  width: 100%;
+  white-space: nowrap;
+}
+.addCartBtn button:hover {
+  background: var(--color-green) !important;
+  color: var(--color-white) !important;
+}
+.dec,
+.inc {
+  background: #3a9e55;
+  border: 1px solid #c7bdac;
+  border-radius: 3px !important;
+  width: 31px !important;
+  height: 31px;
+}
+.count {
+  background: var(--color-white);
+  border: 1px solid #c7bdac;
+  border-radius: 3px;
+  width: 40px;
+  height: 31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topCard h6 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 27px;
+  color: #343e42;
+  margin-bottom: 0;
+}
+.topCard span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #343e42;
+}
+.topCard img {
+  width: 83px;
+  height: 91px;
+}
+.topCard p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #343e42;
+  margin-bottom: 0;
+}
+.quant {
+  color: #637177 !important;
+}
+.orgRate {
+  font-weight: 300 !important;
+  color: #5b696f !important;
+}
+.rate {
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+.list {
+  border-bottom: 1px solid #d3c9b9;
+}
+.list:last-child {
+  border-bottom: 0;
+}
+@media screen and (max-width: 991px) {
+  .quantity {
+    display: none;
+  }
+}

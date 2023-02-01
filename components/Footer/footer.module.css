@@ -1,0 +1,56 @@
+.listItem {
+  padding-left: 0;
+  border: 0;
+  background: none;
+}
+.Wrapper {
+  width: 20%;
+  padding: 0 15px;
+  color: var(--color-white);
+}
+.title {
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+}
+.Wrapper p,
+.Wrapper a {
+  font-weight: 300;
+  font-size: 16px;
+  opacity: 0.8;
+  color: var(--color-white);
+}
+.copyright {
+  border-top: 1px solid var(--color-white);
+}
+.copyright p {
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+}
+.mobileDiv {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .Wrapper {
+    width: 33.33%;
+  }
+  .paymentIcon {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Wrapper {
+    width: 50%;
+  }
+  .deskDiv {
+    display: none;
+  }
+  .mobileDiv {
+    display: block;
+    width: 50%;
+  }
+}

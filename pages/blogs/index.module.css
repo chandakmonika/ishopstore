@@ -1,0 +1,88 @@
+.blog_head {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  font-size: 20px;
+}
+.blogs_head {
+  padding-bottom: 20px;
+}
+.userimage {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #aa9e9e;
+  border-radius: 50%;
+}
+.username {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #21243d;
+}
+.username p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #21243d;
+}
+.likes {
+  display: flex;
+  width: 120px;
+  justify-content: space-between;
+  padding: 0px 0px 10px 0;
+}
+.input {
+  width: 100%;
+}
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 141px;
+  height: 45px;
+  margin-top: 15px;
+  background: #f1f1f1;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #171616;
+}
+.searchForm {
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+}
+.emailbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 37px;
+  border: none;
+  width: 100%;
+  height: 50px;
+  background: #f9a000;
+  border-radius: 3px;
+}
+.tagcloud {
+  border-bottom: 1px solid #e5dfdf;
+}
+.tags {
+  border: 1px solid #e5dfdf;
+  border-radius: 3px;
+  margin: 2px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 0px 7px 0px 7px;
+  color: #21243d;
+}

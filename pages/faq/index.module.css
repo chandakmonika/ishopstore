@@ -1,0 +1,46 @@
+.accordian_header {
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+.accordian_body {
+  color: #544e4e;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  font-weight: 300;
+}
+.accordian_item {
+  border-radius: 5px;
+  border: 1px solid#E3E8ED;
+}
+.accordian {
+  border: 1px solid #e3e8ed;
+  padding: 10px;
+}
+.accordian_head {
+  font-weight: 500;
+  font-size: 18px;
+  padding: 5px;
+}
+.breadcrum {
+  color: #3c4043;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px;
+}
+.sidenav ul li {
+  list-style: none;
+  padding: 10px;
+}
+
+.sidenav {
+  border: 1px solid #e3e8ed;
+}
+.nav_link {
+  color: #333333;
+  padding: 16px;
+}
+
+.nav_link:hover {
+  background-color: #f9f9f9;
+  border-right: 2px solid #bfc2c3;
+}

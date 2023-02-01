@@ -1,0 +1,71 @@
+.box {
+  border-radius: 5px;
+  border: 1px solid rgb(73, 71, 71);
+}
+.section {
+  background-color: #f4f2f1;
+  padding: 40px 0 100px;
+}
+.bgColor {
+  background-color: var(--color-white);
+  padding: 20px;
+}
+.title {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #4d554f;
+  margin-bottom: 0;
+}
+.desc {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 50px;
+  margin-bottom: 0;
+}
+.header {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: #5a6266;
+  border-bottom: 1px solid #d3c9b9;
+}
+.list {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #4b5255;
+}
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #8a9194;
+}
+.free {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #029d24;
+}
+.total {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: #41494d;
+}
+.totalRate {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--color-black);
+}
+.ulList li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3c9b9;
+  padding: 8px 0;
+}
+.heightBox {
+  height: 350px;
+}

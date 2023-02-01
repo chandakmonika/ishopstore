@@ -1,0 +1,41 @@
+.addressTitle {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1392ee;
+}
+.app-layout {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+.addressDetail h4 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  color: #3d3a37;
+  margin-bottom: 0;
+}
+.addressDetail p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #3d3a37;
+  margin-bottom: 0;
+}
+.modal {
+  padding: 22px;
+  background: white;
+  border-radius: 15px;
+  right: 134px;
+  position: absolute;
+}
+/* .modalcard {
+  background-color: #1392ee;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  width: 100%;
+  background-color: white;
+} */

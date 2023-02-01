@@ -1,0 +1,19 @@
+.questionDiv {
+  padding: 10px;
+  border-bottom: 1px solid #e4dbcc;
+}
+.questionDiv h5 {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}
+.questionDiv p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: #2a2e31;
+  margin-bottom: 0;
+}
+.questionDiv:last-child {
+  border-bottom: 0;
+}

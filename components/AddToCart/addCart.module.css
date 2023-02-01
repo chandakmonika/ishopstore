@@ -1,0 +1,29 @@
+.addCartBtn button {
+  background: var(--color-green);
+  border-radius: 5px;
+  color: var(--color-white);
+  width: 100%;
+  white-space: nowrap;
+}
+.addCartBtn button:hover {
+  background: var(--color-green) !important;
+  color: var(--color-white) !important;
+}
+.dec,
+.inc {
+  background: #3a9e55;
+  border: 1px solid #c7bdac;
+  border-radius: 3px !important;
+  width: 31px !important;
+  height: 31px;
+}
+.count {
+  background: var(--color-white);
+  border: 1px solid #c7bdac;
+  border-radius: 3px;
+  width: 40px;
+  height: 31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

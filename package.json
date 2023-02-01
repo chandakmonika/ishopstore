@@ -1,0 +1,51 @@
+{
+  "name": "ishop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
+    "classnames": "^2.3.2",
+    "form-data": "^4.0.0",
+    "formik": "^2.2.9",
+    "moment": "^2.29.4",
+    "next": "12.2.3",
+    "react": "17.0.2",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "17.0.2",
+    "react-image-magnify": "^2.7.4",
+    "react-loading": "^2.0.3",
+    "react-loading-skeleton": "^3.1.0",
+    "react-player": "^2.11.0",
+    "react-range": "^1.8.14",
+    "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^8.0.4",
+    "react-spinners": "^0.13.6",
+    "react-star-ratings": "^2.3.0",
+    "react-toastify": "^9.1.1",
+    "swiper": "^8.4.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^1.19.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,css}": [
+      "prettier --config ./.prettierrc.js --write",
+      "eslint --no-ignore --fix"
+    ]
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./components/** ./pages/** -c .eslintrc.json --ext js,jsx",
+    "lint-fix": "eslint ./components/** ./pages/** -c .eslintrc.json --fix --ext js,jsx",
+    "prepare": "husky install"
+  }
+}
