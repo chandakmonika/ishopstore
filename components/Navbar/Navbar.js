@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,22 +10,64 @@ import { CartModal } from '../CartModal';
 import { toggleCartModal } from '../../redux/cartSlice';
 import { SearchBar } from '../SearchBar';
 import { Dropdown } from 'react-bootstrap';
+import { HeaderAndFooter } from '../../services/HeaderAndFooter';
+import { HeaderandFooterNav } from '../../redux/commonDataSlice';
 
 export const NavbarHeader = () => {
+  const [menuData, setMenuData] = useState()
   const { items, isCartOpen } = useSelector(state => state?.cart);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state?.auth?.isAuthenticated);
   const username = useSelector(state => state?.auth?.user?.username);
   const headerNavData = useSelector(
     state => state?.navigationBar?.navMenu?.primary_menu,
   );
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchfooterData();
+  }, []);
+
+  const fetchfooterData = async () => {
+    const data = await HeaderAndFooter.commonData();
+    dispatch( HeaderandFooterNav(data?.data));
+    setMenuData(data.data);
+  };
+
+  const menudata1 = useSelector(state => state?.navMenu);
+
+  console.log(23,menudata1);
+
+  const menudata = {
+    "mediadata": [
+      {
+          "media_id": 124,
+          "media_title": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
+          "media_alt_text": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
+          "media_caption": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
+          "media_description": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
+          "media_url": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
+          "media_type": "i",
+          "inserted_date": "2023-01-24T06:42:01.000Z",
+          "status": "1",
+          "http_url": "https://cdn.worldvectorlogo.com/logos/lorem-lorem-1.svg"
+      }
+  ]
+  }
+
+  const imgUrl = menudata.mediadata[0].http_url
+  const imgAlt = menudata.mediadata[0].media_alt_text
+
   return (
     <>
       <Navbar expand="lg" className={styles.navBar + 'p-0'}>
+        {
+          console.log(45,menuData)
+        }
         <Container>
           <Navbar.Brand href="/">
-            <img src="/images/logo.svg" alt="Logo" width={75} height={75} />
+            <img src={imgUrl} alt={imgAlt} width={75} height={75} />
           </Navbar.Brand>
           <div className="d-flex gap-3 align-items-center">
             <div
@@ -130,4 +172,5 @@ export const NavbarHeader = () => {
       </Navbar>
     </>
   );
+
 };

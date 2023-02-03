@@ -22,7 +22,7 @@ export const HeroBanner = () => {
     }
   };
 
-  const newData = data.sort(function(a, b) {
+  const newData = data && data.sort(function(a, b) {
     return a.order_number - b.order_number;
   });
 
@@ -37,7 +37,7 @@ export const HeroBanner = () => {
       }}
       modules={[Autoplay]}
     >
-      {newData.map(item => (
+      {newData && newData.length>0 && newData.map(item => (
         <SwiperSlide key={item.id}>
           <div
             className={styles.HeroBanner}
@@ -50,7 +50,7 @@ export const HeroBanner = () => {
                   <div className={styles.Content}>
                     <h1 style={{ color: '#76460D' }}>{item.media_name}</h1>
                     <h3 style={{ color: '#FF5E00' }}>{item.title}</h3>
-                    <Button href={item.media_link}>Shop Now</Button>
+                    <Button href={item.media_link}>Shop Now </Button>
                   </div>
                 </Col>
               </Row>
