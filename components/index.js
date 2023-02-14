@@ -26,3 +26,4 @@ export * from "./RecentCard";
 export * from "./SearchBar";
 export * from "./CartList";
 export * from "./Blog";
+export * from "./RecordNotFound";

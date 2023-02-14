@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { CloseButton } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddressCard, Button } from '../UI';
@@ -12,6 +12,7 @@ import {
 import className from 'classnames';
 import Link from 'next/link';
 import { Products } from '../../services/Products';
+import { AuthLayoutPages } from '../AuthLayout/AuthLayoutPages';
 
 export const CartModal = () => {
   const cartItems = useSelector(state => state.cart.items);
@@ -56,24 +57,35 @@ export const CartModal = () => {
       console.error(err);
     }
   };
-  const totalAmountArray = cartItems.map((item)=>{
+  const totalAmountArray =cartItems && cartItems.map((item)=>{
     return (item.product_price*item.product_qty)
   })
-  const totalSum = totalAmountArray.reduce((prevValue, value) => {
+  const totalSum =totalAmountArray && totalAmountArray.reduce((prevValue, value) => {
     return prevValue + value;
   }, 0);
 
-  const totalItemArray = cartItems.map((item)=>{
+  const totalItemArray =cartItems && cartItems.map((item)=>{
     return item.product_qty
   })
-  const totalCartItem = totalItemArray.reduce((prevValue, value) => {
+  const totalCartItem =totalAmountArray && totalItemArray.reduce((prevValue, value) => {
     return prevValue + value;
   }, 0);
   
-
+const  fetchCartItems = async() =>{
+// try {
+//   const data = "abc"
+// } catch (error) {
   
+// }
+console.log(575)
+}
+
+useEffect(() => {
+  fetchCartItems()
+}, [cartItems])
+  
+console.log(6905,cartItems, isCartOpen)
   return (
-    <>
       <div
         className={className(styles.cartDropdown, {
           [styles.isCartOpen]: isCartOpen,
@@ -98,7 +110,7 @@ export const CartModal = () => {
                         className={`d-flex gap-3 pb-3 mb-3  ${styles.topCard}`}
                         style={{ borderBottom: '1px solid #e5d8d8' }}
                       >
-                        <img src="/images/red-label.png" alt="red-label" />
+                        <img src={p?.mediadata && p?.mediadata[0]?.http_url ? p?.mediadata[0]?.http_url : "/images/default.jpg"} alt="red-label" />
                         <p>{p?.product_name}</p>
                       </div>
                       <div className="d-flex gap-3 align-items-center justify-content-between">
@@ -197,6 +209,5 @@ export const CartModal = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };

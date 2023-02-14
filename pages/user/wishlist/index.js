@@ -11,6 +11,8 @@ import {
 import { Products } from '../../../services/Products';
 import { Wishlist } from '../../../services/wishlist';
 import styles from '../index.module.css';
+import { AuthLayoutPages } from '../../../components/AuthLayout/AuthLayoutPages';
+import { AuthLayout } from '../../../components/AuthLayout/AuthLayout';
 
 export default function WishList() {
 
@@ -51,13 +53,13 @@ export default function WishList() {
     }
   };
   return (
-    <>
+    <AuthLayoutPages>
       <ProfileLayout>
         <div className={styles.profileWrapper}>
           <h3 className={styles.title}>My Wishlist</h3>
           <Row>
             {wishlist.map((item, i) => (
-              <Col md={4} key={i}>
+              <Col md={4} key={i.id}>
                 <AddressCard>
                   <button style={{ border: 'none', background: 'none' }}>
                     <span className={styles.icon}>
@@ -74,7 +76,7 @@ export default function WishList() {
                   >
                     <div className={styles.wishListCard} key={item.product_id}>
                       <div className={`mb-3 text-center ${styles.image}`}>
-                        <img src="/images/wishlist.png" alt="wishlist" />
+                        <img src={item?.mediadata[0]?.http_url ? item?.mediadata[0]?.http_url : "/images/default.jpg"} alt="wishlist" />
                       </div>
                       <div className={styles.content}>
                         <h4>{item.product_name}</h4>
@@ -97,6 +99,6 @@ export default function WishList() {
           </Row>
         </div>
       </ProfileLayout>
-    </>
+    </AuthLayoutPages>
   );
 }

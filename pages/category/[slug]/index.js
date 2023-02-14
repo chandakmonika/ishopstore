@@ -15,6 +15,7 @@ export default function Category() {
   const user = useSelector(state => state?.auth?.user?.user_id);
   const router = useRouter();
   const catagoryId = router?.query?.id;
+  const brandId = router?.query?.brandId;
   const [drive, setDrive] = useState([null, null]);
   const wishlist = useSelector(state => state.products.wishlistProducts);
   const [sortByLabel, setSortByLabel] = useState('');
@@ -31,7 +32,7 @@ export default function Category() {
 
   useEffect(() => {
     fetchProductData();
-  }, [drive, filterSortBy, filterOrderBy]);
+  }, [drive, filterSortBy, filterOrderBy,brandId]);
 
   function handleChange(event) {
     if (event.target.value == '0') {
@@ -62,6 +63,7 @@ export default function Category() {
       const data = await Products.getAllData({
         user_id: user,
         category_id: catagoryId,
+        brand_id: brandId,
         min_price: drive[0],
         max_price: drive[1],
         sort_by: filterSortBy,

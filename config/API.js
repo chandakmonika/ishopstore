@@ -7,7 +7,7 @@ const subDomain = windowObject ? windowObject.location.host.split(".")[0] : null
 const defaultOptions = {
   baseURL: config.appUrl,
   headers: {
-    storename: subDomain===("localhost:3000") ? 'kbtrends' : subDomain,
+    storename: subDomain===("localhost:3000") ? 'kbcollections' : subDomain,
   },
   
 };

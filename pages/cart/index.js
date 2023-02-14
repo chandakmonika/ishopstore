@@ -84,7 +84,7 @@ export default function Checkout() {
                         Minimum order above Rs.200
                       </Button>
                     ) : null}
-                    <Link href="/payment">
+                    <Link href="/checkout">
                       <Button className={styles.checkoutBtn}>Checkout</Button>
                     </Link>
                   </div>

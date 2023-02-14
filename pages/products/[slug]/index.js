@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import {
   AddressCard,
   AppLayout,
+  Product,
   Question,
   RatingProgress,
   RecentProducts,
@@ -18,33 +19,40 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ReactPlayer from 'react-player';
-
-const list = [
-  {
-    img: '/images/thumb.png',
-    type: 'image/png',
-  },
-  {
-    img: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-    type: 'video/mp4',
-  },
-  {
-    img: '/images/thumb.png',
-    type: 'image/png',
-  },
-  {
-    img: '/images/thumb.png',
-    type: 'image/png',
-  },
-  {
-    img: '/images/thumb.png',
-    type: 'image/png',
-  },
-];
+// import { toggleCartModal } from '../../../redux/cartSlice';
+import { AddToCart } from '../../../components';
+import Link from 'next/link';
+import { selectProductReview } from '../../../redux/productSlice';
+// const list = [
+//   {
+//     img: '/images/thumb.png',
+//     type: 'image/png',
+//   },
+//   {
+//     img: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+//     type: 'video/mp4',
+//   },
+//   {
+//     img: '/images/thumb.png',
+//     type: 'image/png',
+//   },
+//   {
+//     img: '/images/thumb.png',
+//     type: 'image/png',
+//   },
+//   {
+//     img: '/images/thumb.png',
+//     type: 'image/png',
+//   },
+// ];
 
 export default function ProductSingle() {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const [faqData, setFaqData] = useState([]);
+  const [attrData, setAttrData] = useState([]);
+  const [ratingData, setRatingData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
   const router = useRouter();
   const [video, setVideo] = useState('');
   const product_id = router.query.id;
@@ -60,6 +68,11 @@ export default function ProductSingle() {
     try {
       const data = await Products.singleData(product_slug);
       setData(data.data.data);
+      setFaqData(data.data.faq);
+      setAttrData(data.data.attributes);
+      setRatingData(data.data.rating);
+      setReviewData(data.data.reviews);
+      console.log(77, data);
     } catch (error) {
       console.error('error------------------>', error);
     }
@@ -74,7 +87,7 @@ export default function ProductSingle() {
       if (item) {
         toast.success('item already exist');
       } else {
-         await Products.addToCart({
+        await Products.addToCart({
           product_id: parseInt(product_id),
           user_id: user_id,
         });
@@ -107,6 +120,7 @@ export default function ProductSingle() {
   //   }
   // };
 
+  console.log(56, data);
   return (
     <>
       <AppLayout>
@@ -137,10 +151,16 @@ export default function ProductSingle() {
                             smallImage={{
                               alt: 'Wristwatch by Ted Baker London',
                               isFluidWidth: true,
-                              src: '/images/single-product.png',
+                              src:
+                                data && data.mediadata
+                                  ? data?.mediadata[0].http_url
+                                  : '/images/default.jpg',
                             }}
                             largeImage={{
-                              src: '/images/single-product.png',
+                              src:
+                                data && data.mediadata
+                                  ? data?.mediadata[0].http_url
+                                  : '/images/default.jpg',
                               width: 1200,
                               height: 1800,
                             }}
@@ -152,40 +172,52 @@ export default function ProductSingle() {
 
                   <div className={styles.sliderImages}>
                     <Swiper spaceBetween={10} slidesPerView={4}>
-                      {list.map((data, index) => (
-                        <SwiperSlide key={index}>
-                          <AddressCard>
-                            {/* <div className={styles.thhumbnailImg}> */}
-                            {data?.type !== 'video/mp4' ? (
-                              <img
-                                src={data.img}
-                                alt="product"
-                                width="100%"
-                                onClick={() => handleClick('img')}
-                              />
-                            ) : (
-                              <video
-                                src={data.img}
-                                width="100%"
-                                onClick={() => handleClick('video')}
-                                poster="/images/play.jpg"
-                              />
-                            )}
+                      {data &&
+                        data.mediadata &&
+                        data.mediadata.length > 0 &&
+                        data.mediadata.map((data, index) => (
+                          <SwiperSlide key={index}>
+                            <AddressCard>
+                              {/* <div className={styles.thhumbnailImg}> */}
+                              {data?.type !== 'video/mp4' ? (
+                                <img
+                                  src={data.http_url}
+                                  alt="product"
+                                  width="100%"
+                                  onClick={() => handleClick('img')}
+                                />
+                              ) : (
+                                <video
+                                  src={data.http_url}
+                                  width="100%"
+                                  onClick={() => handleClick('video')}
+                                  poster="/images/play.jpg"
+                                />
+                              )}
 
-                            {/* </div> */}
-                          </AddressCard>
-                        </SwiperSlide>
-                      ))}
+                              {/* </div> */}
+                            </AddressCard>
+                          </SwiperSlide>
+                        ))}
                     </Swiper>
                   </div>
                   <div className="d-flex gap-3 justify-content-center">
-                    <Button
-                      onClick={() => productAddToCart(product_id, data)}
+                    {/* <Button
+                      onClick={() => {
+                        dispatch(toggleCartModal(true))
+                        productAddToCart(product_id, data)
+                      }}
+                      
+                    
                       className={styles.addToCart}
                     >
                       Add to Cart
-                    </Button>
+                    </Button> */}
+                    <AddToCart productItem={data} />
+                    <Link href="/checkout">
                     <Button className={styles.buyNow}>Buy Now</Button>
+                    </Link>
+                    
                   </div>
                 </div>
               </Col>
@@ -236,24 +268,30 @@ export default function ProductSingle() {
                   </AddressCard>
                   <AddressCard customClass="p-0">
                     <div className={styles.header}>Attributes</div>
-                    <ul className={styles.listUl}>
-                      <li>
-                        <span className={styles.name}>Brand</span>
-                        <span className={styles.content}>Kelloggs’s</span>
-                      </li>
-                      <li>
-                        <span className={styles.name}>Content</span>
-                        <span className={styles.content}> Nut Seeds</span>
-                      </li>
-                      <li>
-                        <span className={styles.name}>Weight</span>
-                        <span className={styles.content}>500 grm</span>
-                      </li>
-                      <li>
-                        <span className={styles.name}>Nutrient Content</span>
-                        <span className={styles.content}>Nutrient Content</span>
-                      </li>
-                    </ul>
+                    {// attrData && attrData.length >0 && attrData.map((attr,i)=>(
+                    //   <Question key={`attr-data-${i}`} attributekey={attr.attribute_key} attributevalue={attr.attribute_value}/>                        }                     />
+                    // ))
+                    attrData &&
+                      attrData.length > 0 &&
+                      attrData.map((attr, i) => (
+                        <div key={`attr_data=${i}`}>
+                          <h6>{attr.group_title}</h6>
+                          <ul className={styles.listUl}>
+                            {attr.attributes.map((attrItem, i) => {
+                              return (
+                                <li key={`attr_item=${i}`}>
+                                  <span className={styles.name}>
+                                    {attrItem.attribute_key}
+                                  </span>
+                                  <span className={styles.content}>
+                                    {attrItem.attribute_value}
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      ))}
                   </AddressCard>
                   <AddressCard>
                     <div className={styles.ratingReview}>
@@ -262,8 +300,9 @@ export default function ProductSingle() {
                           <h5 className={styles.ratingTag}>
                             Ratings & Reviews
                           </h5>
+
                           <div className="d-flex gap-3 align-items-center">
-                            <h2 className="mb-0">4.5 </h2>
+                            <h2 className="mb-0">{ratingData.final_rating} </h2>
                             <div className="d-flex align-items-center gap-2">
                               <img src="/images/yellow-star.svg" alt="star" />
                               <img src="/images/yellow-star.svg" alt="star" />
@@ -274,9 +313,14 @@ export default function ProductSingle() {
                           </div>
                           <p className="mb-0">100 Ratings & 50 Reviews</p>
                         </div>
-                        <Button className={styles.rateBtn} variant="light">
-                          Rate your Product
-                        </Button>
+                        {/* <Link href={`/user/review-and-rating/add-rating?Id=${product_id}`}> */}
+                          <Button className={styles.rateBtn} onClick={()=>{
+                            // dispatch(selectProductReview(data))
+                            router.push(`/user/review-and-rating/add-rating?Id=${data.product_name_slug}`)
+                          }} variant="light">
+                            Rate your Product
+                          </Button>
+                        {/* </Link> */}
                       </div>
                       <div className={`py-3 ${styles.progressBar}`}>
                         <RatingProgress
@@ -315,20 +359,39 @@ export default function ProductSingle() {
                           Reviews from Customer
                         </h5>
                       </div>
-                      <div className={styles.reviews}>
-                        <SingleReview />
-                        <SingleReview />
-                      </div>
+                      {reviewData &&
+                        reviewData.length > 0 &&
+                        reviewData.map((review, i) => {
+                          return (
+                            <div className={styles.reviews}  key={`review-data-${i}`}>
+                              <SingleReview
+                               review = {review}
+                                // firstname={review.first_name}
+                                // commentmsg={review.comment_msg}
+                              />
+                              {/* <SingleReview key={`review-data-${i}`}
+                      firstname={review.first_name}
+                      commentmsg={review.comment_msg} /> */}
+                            </div>
+                          );
+                        })}
+                      {console.log(4222, reviewData)}
                     </div>
                   </AddressCard>
                   <AddressCard customClass="p-0">
                     <div className={styles.questionHeadDiv}>
                       Product Questions & Answer
                     </div>
-                    <Question />
-                    <Question />
-                    <Question />
-                    <Question />
+                    {faqData &&
+                      faqData.length > 0 &&
+                      faqData.map((faq, i) => (
+                        <Question
+                          key={`faq-data-${i}`}
+                          ques={faq.question}
+                          ans={faq.answer}
+                        />
+                      ))}
+                    {console.log(67, data)}
                   </AddressCard>
                 </div>
               </Col>

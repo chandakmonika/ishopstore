@@ -13,7 +13,7 @@
   margin-right: -50%;
   transform: translateX(100vw);
   transition: all 0.5s;
-  z-index: 2;
+  z-index: 15;
 }
 .isCartOpen {
   margin-right: 0;

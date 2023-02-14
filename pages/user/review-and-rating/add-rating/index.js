@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { Button, ProfileLayout } from '../../../../components';
 import styles from './index.module.css';
@@ -7,14 +7,20 @@ import SingleFileUpload from './Fileupload';
 import { Ratings } from '../../../../services/Rating';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { Products } from '../../../../services/Products';
+
 export default function ListAddress() {
+  const router = useRouter();
   const [description, setDescription] = useState('');
   const [rating, setRating] = useState('');
+  const [product, setProduct] = useState('');
+  const productSlug = router.query['Id'];
   const user = useSelector(state => state?.auth?.user?.user_id);
   const imageArray = useSelector(
     state => state.products.productRatingImageArray,
   );
-  const router = useRouter()
+  // const product = useSelector(state => state.products.selectProductReview);
+
   const handleInput = e => {
     setDescription(e.target.value);
   };
@@ -23,15 +29,15 @@ export default function ListAddress() {
     try {
       await Ratings.postRating({
         user_id: user,
-        product_id: '291',
+        product_id: product.product_id,
         comment_msg: description,
         rating_value: rating,
         rating_media: imageArray,
       });
-      router.push("/user/review-and-rating")
+      router.push('/user/review-and-rating');
     } catch (err) {
       console.error(err);
-      router.push("/user/review-and-rating")
+      router.push('/user/review-and-rating');
     }
   };
   const handleSubmit = e => {
@@ -41,6 +47,23 @@ export default function ListAddress() {
   const handleRatingInput = e => {
     setRating(e);
   };
+
+  const fetchData = async () => {
+    try {
+      const data = await Products.singleData(productSlug);
+
+      setProduct(data.data.data);
+      console.log(77, data);
+    } catch (error) {
+      console.error('error------------------>', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [productSlug])
+
+  console.log(90,productSlug)
 
   return (
     <>
@@ -52,10 +75,11 @@ export default function ListAddress() {
               <div className="d-flex justify-content-between align-items-start">
                 <div className="d-flex gap-3">
                   <div className={styles.image}>
-                    <img src="/images/p-1.png" alt="img" />
+                    <img src={product && product?.mediadata[0]?.http_url} alt="img" />
+                    {console.log(72, product)}
                   </div>
                   <div className={styles.addressDetail}>
-                    <h4>Kellogg’s Oats</h4>
+                    <h4>{product.product_name}</h4>
                     <p>900 gms</p>
                     <div
                       style={{

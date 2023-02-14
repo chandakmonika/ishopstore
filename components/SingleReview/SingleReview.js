@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './singleReview.module.css';
 
-export const SingleReview = () => {
+export const SingleReview = ({review}) => {
   return (
     <>
       <div className={styles.singleReview}>
         <div className="d-flex gap-3 align-items-start">
-          <img src="/images/round.svg" alt="round" />
+          <img src={""} alt="round" />
           <div className="">
-            <h5 className={styles.ratingTag}>Customer Name</h5>
+            <h5 className={styles.ratingTag}>{review.first_name} {review.last_name}</h5>
             <div className="d-flex gap-2">
               <img src="/images/yellow-star.svg" alt="star" />
               <img src="/images/yellow-star.svg" alt="star" />
@@ -19,9 +19,7 @@ export const SingleReview = () => {
           </div>
         </div>
         <p>
-          Farmley source all the nuts & dry fruits directly from the farms which
-          are hygienically packed in a HACCP certified unit. We pack almonds
-          which are
+          {review.comment_msg}
         </p>
       </div>
     </>

@@ -5,8 +5,8 @@ export const cartSlice = createSlice({
   initialState: {
     items: [],
     isCartOpen: false,
-    totalCartValue: "",
-    totalItem: null
+    totalCartValue: '',
+    totalItem: null,
   },
   reducers: {
     cartItemList: (state, action) => {
@@ -42,8 +42,10 @@ export const cartSlice = createSlice({
     },
     increaseQuantity: (state, action) => {
       const product_id = action.payload;
+      
       // check if product is  in card
       const item = state.items.find(p => p.product_id === product_id);
+      console.log(7612, state.items, item, product_id);
 
       // if product exist in the card do nothing
       if (!item) return;
@@ -52,6 +54,7 @@ export const cartSlice = createSlice({
     },
     decreaseQuantity: (state, action) => {
       const product_id = action.payload;
+      console.log(5434, product_id);
       // check if product is  in card
       const item = state.items.find(p => p.product_id === product_id);
 
@@ -75,18 +78,16 @@ export const cartSlice = createSlice({
       const product_id = action.payload;
       // check if product is  in card
       const item = state.items.find(p => p.product_id === product_id);
-
       // if product exist in the card do nothing
       if (!item) return;
-
       state.items = state.items.filter(item => item.product_id !== product_id);
     },
-    totalCartAmount: (state,action) => {
-      state.totalCartValue = action.payload
+    totalCartAmount: (state, action) => {
+      state.totalCartValue = action.payload;
     },
-    totalCartItems: (state,action) => {
-      state.totalItem = action.payload
-    }
+    totalCartItems: (state, action) => {
+      state.totalItem = action.payload;
+    },
   },
 });
 
@@ -98,7 +99,7 @@ export const {
   cartItemList,
   removeToCart,
   totalCartAmount,
-  totalCartItems
+  totalCartItems,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

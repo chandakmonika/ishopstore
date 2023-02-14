@@ -37,11 +37,14 @@ export const HeroBanner = () => {
       }}
       modules={[Autoplay]}
     >
+      {
+        console.log(78,newData)
+      }
       {newData && newData.length>0 && newData.map(item => (
         <SwiperSlide key={item.id}>
           <div
             className={styles.HeroBanner}
-            style={{ backgroundImage: `url(${item.image_url})` }}
+            style={{ backgroundImage: `url(${item.mediadata[0].http_url ? item.mediadata[0].http_url : "/images/defsult.jpg"})` }}
           >
             <Container>
               <Row>

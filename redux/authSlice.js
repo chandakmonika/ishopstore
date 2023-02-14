@@ -13,6 +13,8 @@ const initialState = {
   addresses: [],
 };
 
+console.log(4358, initialState)
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,

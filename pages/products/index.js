@@ -1,14 +1,12 @@
 import React from 'react';
-
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Container, FormSelect, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppLayout, FilterSideBar, ProductMainCard } from '../../components';
+import { AppLayout, Category, FilterSideBar, ProductMainCard } from '../../components';
 import { getAllProductData } from '../../redux/productSlice';
 import { Products } from '../../services/Products';
 import styles from './index.module.css';
-
 import Paginations from '../../components/pagination/pagination';
 // import { Categories } from '../../services/homeservices';
 
@@ -60,12 +58,14 @@ export default function Product() {
   const fetchProductData = async () => {
     try {
       const data = await Products.getAllData({
+        // category_id: "1302",
         user_id: user,
         min_price: drive[0],
         max_price: drive[1],
         sort_by: filterSortBy,
         order_by: filterOrderBy,
         page: Number(pageNumber),
+        
       });
       setTotalPage(data.data.pages);
       setProductData(data.data.data);

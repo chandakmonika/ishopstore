@@ -9,6 +9,8 @@ export const productSlice = createSlice({
     getAllProductData: [], //Category Wise Product Data Store
     wishlistProducts: [], //Wishlist Data Store
     productRatingImageArray: [],
+    // selectProductReview: {}
+
   },
   reducers: {
     wishlistProducts: (state, action) => {
@@ -18,6 +20,10 @@ export const productSlice = createSlice({
     getAllProductData: (state, action) => {
       const data = action.payload;
       state.getAllProductData = data;
+    },
+    allProducts: (state, action) => {
+      const data = action.payload;
+      state.allProducts = data;
     },
     addtoWishlist: (state, action) => {
       const { product_id, user } = action.payload;
@@ -45,6 +51,10 @@ export const productSlice = createSlice({
     ratingImageArray: (state, action) => {
       state.productRatingImageArray = action.payload;
     },
+    // selectProductReview: (state, action) => {
+    //   const data = action.payload;
+    //   state.selectProductReview = data;
+    // },
   },
 });
 
@@ -52,8 +62,10 @@ export const {
   addtoWishlist,
   removefromWishlist,
   getAllProductData,
+  allProducts,
   wishlistProducts,
   ratingImageArray,
+  // selectProductReview
 } = productSlice.actions;
 
 export default productSlice.reducer;

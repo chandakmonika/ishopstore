@@ -37,27 +37,10 @@ export const NavbarHeader = () => {
 
   const menudata1 = useSelector(state => state?.navMenu);
 
-  console.log(23,menudata1);
+  const imgUrl = menuData?.sellerdata[0].mediadata[0].http_url ? menuData?.sellerdata[0].mediadata[0].http_url : "/images/default.jpg";
+  const imgAlt = menuData?.sellerdata[0].media_alt_text;
 
-  const menudata = {
-    "mediadata": [
-      {
-          "media_id": 124,
-          "media_title": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
-          "media_alt_text": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
-          "media_caption": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
-          "media_description": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
-          "media_url": "kbcollections/2023/0/2/1674542521948-hudderton-backpack-khaki.webp",
-          "media_type": "i",
-          "inserted_date": "2023-01-24T06:42:01.000Z",
-          "status": "1",
-          "http_url": "https://cdn.worldvectorlogo.com/logos/lorem-lorem-1.svg"
-      }
-  ]
-  }
-
-  const imgUrl = menudata.mediadata[0].http_url
-  const imgAlt = menudata.mediadata[0].media_alt_text
+  
 
   return (
     <>
@@ -66,8 +49,8 @@ export const NavbarHeader = () => {
           console.log(45,menuData)
         }
         <Container>
-          <Navbar.Brand href="/">
-            <img src={imgUrl} alt={imgAlt} width={75} height={75} />
+          <Navbar.Brand href="/" style={{width:"2050px",maxWidth:"180px"}}>
+            <img src={imgUrl} alt={imgAlt} style={{width:"2050px",maxWidth:"180px"}} />
           </Navbar.Brand>
           <div className="d-flex gap-3 align-items-center">
             <div
@@ -89,8 +72,9 @@ export const NavbarHeader = () => {
                 <HeartIcon />
               </Link>
               <CartModal />
+              {console.log(324, isAuthenticated)}
               <div
-                onClick={() => dispatch(toggleCartModal(!isCartOpen))}
+                onClick={() => isAuthenticated && dispatch(toggleCartModal(!isCartOpen))}
                 className={`d-flex align-items-center ${styles.cartIcon}`}
                 style={{ cursor: 'pointer' }}
               >
@@ -108,7 +92,7 @@ export const NavbarHeader = () => {
             className="justify-content-between"
           >
             <div className={`d-flex gap-4  ${styles.flexNav}`}>
-              {headerNavData?.map((item, i) =>
+              {headerNavData && headerNavData.length >0 && headerNavData?.map((item, i) =>
                 item?.subitems?.length > 0 ? (
                   <Nav
                     className={`my-2 my-lg-0 ${styles['navigation-items']}`}
@@ -131,7 +115,7 @@ export const NavbarHeader = () => {
                   </Nav>
                 ) : (
                   <Nav className={`my-2 my-lg-0 ${styles['navigation-items']}`}>
-                    <Link href={item.menu_link}>{item.menu_label}</Link>
+                    <Link href={item.page_link}>{item.menu_label}</Link>
                   </Nav>
                 ),
               )}
@@ -154,7 +138,7 @@ export const NavbarHeader = () => {
 
               <CartModal />
               <div
-                onClick={() => dispatch(toggleCartModal(!isCartOpen))}
+                onClick={() => isAuthenticated && dispatch(toggleCartModal(!isCartOpen))}
                 className={`d-flex align-items-center ${styles.cartIcon}`}
                 style={{ cursor: 'pointer' }}
               >

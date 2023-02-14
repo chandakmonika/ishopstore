@@ -1,3 +1,6 @@
+/* .addCartBtn{
+  width: 50%;
+} */
 .addCartBtn button {
   background: var(--color-green);
   border-radius: 5px;

@@ -105,7 +105,7 @@ export const Footer = () => {
           <div className={styles.Wrapper}>
             <h4 className={styles.title}>About</h4>
             <ListGroup>
-              {footerNavData?.footer1_menu?.map((data, id) => (
+              {footerNavData && footerNavData?. footer1_menu && footer1_menu?.map((data, id) => (
                 <ListGroup.Item className={styles.listItem} key={id}>
                   <a href={data?.menu_link}>{data?.menu_label}</a>
                 </ListGroup.Item>
@@ -115,7 +115,7 @@ export const Footer = () => {
           <div className={styles.Wrapper}>
             <h4 className={styles.title}>Policy</h4>
             <ListGroup>
-              {footerNavData?.footer2_menu?.map((data, id) => (
+              {footerNavData && footerNavData?. footer2_menu && footer2_menu?.map((data, id) => (
                 <ListGroup.Item className={styles.listItem} key={id}>
                   <a href={data?.menu_link}>{data?.menu_label}</a>
                 </ListGroup.Item>
@@ -125,7 +125,7 @@ export const Footer = () => {
           <div className={styles.Wrapper}>
             <h4 className={styles.title}>Account</h4>
             <ListGroup>
-              {footerNavData.footer3_menu?.map((data, id) => (
+              {footerNavData.footer3_menu && footer3_menu?.map((data, id) => (
                 <ListGroup.Item className={styles.listItem} key={id}>
                   <a href={data?.menu_link}>{data?.menu_label}</a>
                 </ListGroup.Item>
@@ -135,7 +135,7 @@ export const Footer = () => {
           <div className={styles.Wrapper}>
             <h4 className={styles.title}>Links</h4>
             <ListGroup>
-              {footerNavData.footer4_menu?.map((data, id) => (
+              {footerNavData.footer4_menu && footer4_menu?.map((data, id) => (
                 <ListGroup.Item className={styles.listItem} key={id}>
                   <a href={data?.menu_link}>{data?.menu_label}</a>
                 </ListGroup.Item>

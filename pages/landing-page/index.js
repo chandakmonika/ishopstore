@@ -1,9 +1,10 @@
+// import './index.module.css';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Form as BForm } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Button, FormErrorMessage } from '../../components';
-import { AuthLayout } from '../../components/AuthLayout/AuthLayout';
+// import { AuthLayout } from '../../components/AuthLayout/AuthLayout';
 import { EyeHideIcon, EyeShowIcon } from '../../public/svg';
 import styles from './index.module.css';
 import { AuthService } from '../../services/Auth';
@@ -11,7 +12,6 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { authenticating, loginFail, loginSuccess } from '../../redux/authSlice';
 import { toast, ToastContainer } from 'react-toastify';
-import { useRouter } from 'next/router';
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .email('Invalid email')
@@ -27,7 +27,6 @@ const SignupSchema = Yup.object().shape({
 
 export default function Login() {
   const dispatch = useDispatch();
-  const router = useRouter()
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState(' ');
 
@@ -39,7 +38,6 @@ export default function Login() {
       const { data } = await AuthService.login(values);
       toast.success('Successfully logged in');
       dispatch(loginSuccess(data));
-      router.back()
     } catch (error) {
       setError(error?.response?.data?.message);
       toast.error(' Error while logging in');
@@ -49,16 +47,23 @@ export default function Login() {
     }
   };
 
-  console.log(5454, router)
-
   return (
     <>
       <ToastContainer />
-      <AuthLayout>
-        <h3 className="text-center mb-5">Login</h3>
+      {/* <AuthLayout> */}
+      <div className={styles.loginContainer}>
+        {/* <h3 className="text-center mb-5">Login</h3> */}
+
+        <div className='d-flex justify-content-center'>
+          <img
+            src="/images/buildmymart.png"
+            className="text-center"
+            width={'250px'}
+          />
+        </div>
         <Formik
           initialValues={{
-            username: 'simon@mailinator.com',
+            // username: 'simon@mailinator.com',
             password: '123456',
           }}
           validationSchema={SignupSchema}
@@ -66,7 +71,7 @@ export default function Login() {
         >
           {({ values, handleChange, isSubmitting }) => (
             <Form className={styles.Form}>
-              <BForm.Group className="mb-3" controlId="formBasicEmail">
+              {/* <BForm.Group className="mb-3" controlId="formBasicEmail">
                 <BForm.Label>Email</BForm.Label>
                 <BForm.Control
                   name="username"
@@ -76,7 +81,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
                 <FormErrorMessage name="username" />
-              </BForm.Group>
+              </BForm.Group> */}
 
               <BForm.Group
                 className="mb-3 position-relative"
@@ -98,37 +103,28 @@ export default function Login() {
                 </span>
                 <FormErrorMessage name="password" />
               </BForm.Group>
-              <BForm.Group className="mb-3">
-                <a href="">Forgot your Password ?</a>
-              </BForm.Group>
+
               <BForm.Group style={{ color: 'red' }}>{error}</BForm.Group>
               <Button type="submit" loading={isSubmitting}>
-                Login
+                Enter
               </Button>
             </Form>
           )}
         </Formik>
-        <button className={`btn  mt-4 mb-5 ${styles.otherLogin}`}>
+        {/* <button className={`btn  mt-4 mb-5 ${styles.otherLogin}`}>
           <img src="/images/google.svg" alt="google" className="me-2" />
           Google
-        </button>
+        </button> */}
         <p className="mb-0">
-          Dont’ have an account?{' '}
+          Are you store owner?{' '}
           <Link href="/sign-up">
-            <span style={{ color: '#FBA900', cursor: 'pointer' }}>Signup</span>
+            <span style={{ color: '#FBA900', cursor: 'pointer' }}>
+              Log in here
+            </span>
           </Link>
         </p>
-        <p className="mb-0 pt-3 pb-5">
-          By continuing, you agree that you have read and accept
-          <a href="" className="ps-1">
-            Terms of Use
-          </a>{' '}
-          and{' '}
-          <a href="" className="ps-1">
-            Privacy Policy.
-          </a>
-        </p>
-      </AuthLayout>
+      </div>
+      {/* </AuthLayout> */}
     </>
   );
 }

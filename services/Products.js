@@ -95,3 +95,17 @@ Products.orderDetail = async order_id => {
     method: 'get',
   });
 };
+
+Products.categoriesWithBrands = async ()  => {
+  return API({
+    url: '/products/categorieswithbrands',
+    method: 'get',
+  });
+};
+
+Products.parentcategories = async () => {
+  return API({
+    url: '/products/parentcategories',
+    method: 'get',
+  })
+}

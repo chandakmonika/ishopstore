@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   addtoWishlist,
   removefromWishlist,
@@ -13,11 +12,11 @@ import { Products } from '../../services/Products';
 import { Wishlist } from '../../services/wishlist';
 import { AddressCard } from '../UI';
 import styles from './productmainCard.module.css';
+import RecordNotFound from '../RecordNotFound/RecordNotFound';
 
 export const ProductMainCard = () => {
   const [productId, setProductId] = useState(null);
   const user = useSelector(state => state?.auth?.user?.user_id);
-
   const dispatch = useDispatch();
   const products = useSelector(state => state?.products?.getAllProductData);
 
@@ -73,20 +72,25 @@ export const ProductMainCard = () => {
     } catch (error) {
       console.error('error----------------------->', error);
     }
+
   };
+  const onErrorImage= (e) =>{
+  e.target.src = "/images/default.jpg"
+  }
 
   return (
     <>
-      {products?.map(item => (
+      {products && products.length>0 ? products?.map(item => (
         <Col md={4} key={item.product_id}>
           <AddressCard>
             <button style={{ border: 'none', background: 'none' }}>
               <span className={styles.icon}>
+                {console.log(3245, item)}
                 {item?.is_wishlisted == true && (
                   <img
                     id={item.product_id}
                     onClick={() => setProductId(item)}
-                    src="/images/red-heart.svg"
+                    src="/images/heart-red.svg"
                     alt="red-heart"
                   />
                 )}
@@ -108,7 +112,7 @@ export const ProductMainCard = () => {
             >
               <div className={styles.wishListCard} key={item.product_id}>
                 <div className={`mb-3 text-center ${styles.image}`}>
-                  <img src={'/images/wishlist.png'} alt="Product Image" />
+                  <img onError={(e)=> onErrorImage(e)} src={item.mediadata[0].http_url ? item.mediadata[0].http_url : "/images/default.jpg"} alt="Product Image" className={styles.wishlistImg}/>
                 </div>
                 <div className={styles.content}>
                   <h4>{item.product_name}</h4>
@@ -125,7 +129,12 @@ export const ProductMainCard = () => {
             </Link>
           </AddressCard>
         </Col>
-      ))}
+      )):
+
+   
+      < RecordNotFound/>
+     
+      }
     </>
   );
 };

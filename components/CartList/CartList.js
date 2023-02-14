@@ -54,7 +54,7 @@ export const CartList = () => {
       {cartItems.map(item => (
         <div key={item.id} className={`p-3 mb-3 ${styles.list}`}>
           <div className={`d-flex gap-3 pb-3 ${styles.topCard}`}>
-            <img src="/images/red-label.png" alt="red-label" />
+            <img src={item?.mediadata?.http_url ? item?.mediadata[0]?.http_url : "/images/default.jpg"} alt="red-label" />
             <div className={styles.content}>
               <p>{item.product_name}</p>
               <span className={styles.quant}> 500gm</span>
