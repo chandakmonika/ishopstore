@@ -18,7 +18,7 @@ export const Product = ({ data }) => {
     try {
       await Products.addToWishlist({
         product_id: data?.product_id,
-        user_id: data.user_id,
+        user_id: user,
       });
       dispatch(addtoWishlist({ product_id: data.product_id, user_id: user }));
     } catch (error) {

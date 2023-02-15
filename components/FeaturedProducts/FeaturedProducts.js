@@ -28,7 +28,6 @@ const fetchProductDetails  = async () => {
   }
 }
 
-
   useEffect(() => {
     fetchProductDetails()
   }, [])
@@ -46,9 +45,9 @@ const fetchProductDetails  = async () => {
               >
                 Featured Products
               </h4>
-              <Link href='/products'>
+              {/* <Link href='/products'>
               <Button>View More</Button>
-              </Link>
+              </Link> */}
             </div>
             <Carousel>
               {productData?.map(product => (

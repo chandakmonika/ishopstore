@@ -11,6 +11,9 @@ import { useRouter } from 'next/router';
 export const FilterSideBar = ({ productDataTransfer }) => {
   const router = useRouter();
   const catId = router.query['id'];
+  const brandId = router.query['brandId'];
+  const subCatId = router.query['sunCatId'];
+
   console.log(1234, router.query['id']);
 
   const STEP = 1;
@@ -20,12 +23,12 @@ export const FilterSideBar = ({ productDataTransfer }) => {
   const [priceFilter, setPriceFilter] = useState([0, 500]);
   const [filterList, setFilterList] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [priceRange, setPriceRange] = useState({});
+  const [brandData, setBrandData] = useState([]);
 
   productDataTransfer(priceFilter);
 
   useEffect(() => {
-    fetchProductData()
+    fetchProductData();
     brandFilterListData();
   }, []);
 
@@ -34,13 +37,24 @@ export const FilterSideBar = ({ productDataTransfer }) => {
       const data = await Products.categoriesWithBrands();
       setFilterList(data.data.data);
       setProductData(data.data.data);
-      setPriceFilter([0, 500])
+      // setPriceFilter([0, 500]);
+      
       console.log(42, data);
       console.log(43, data);
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(()=>{
+    console.log(6777,productData)
+    if(productData){
+      const brand = productData && productData.length>0 && productData.find(items => items.category_id === Number(catId))?.brands;
+      setBrandData(brand);
+      console.log(6778,brand)
+    }
+   
+  },[productData,catId])
 
   filterList.map(item => {
     console.error(item.brands);
@@ -51,20 +65,35 @@ export const FilterSideBar = ({ productDataTransfer }) => {
       const data = await Products.getAllData();
       // setTotalPage(data.data.pages);
       // setProductData(data.data.data);
-      console.log(78,data.data.pages.max_product_price)
-      setPriceFilter([Number(data.data.pages.min_product_price), Number(data.data.pages.max_product_price)])
-      console.log(79,data)
+      console.log(78, data.data.pages.max_product_price);
+      setPriceFilter([
+        Number(data.data.pages.min_product_price),
+        Number(data.data.pages.max_product_price),
+      ]);
+      console.log(79, data);
       // dispatch(getAllProductData(data.data.data));
     } catch (error) {
       console.error('error------------------>', error);
     }
   };
 
+  const queryFilter = (catId,brandId,subCatId)=>{
+    router.push(
+      `/category/accessories?id=${catId?catId:""}&brandId=${brandId?brandId:""}&subCatId=${subCatId?subCatId:""}`,
+    );
+  }
+
   return (
     <>
       <div className={styles.sideSlideBar}>
         <div className={`mb-3 ${styles.filterDiv}`}>
+          <div className='d-flex justify-content-between'>
           <h3>Filters</h3>
+          <button onClick={()=>{
+            queryFilter(catId)
+          }}>Clear</button>
+          </div>
+         
           <div className="d-flex flex-wrap gap-3">
             {(priceFilter[1] !== MAX || priceFilter[0] !== MIN) && (
               <div className={styles.filters}>
@@ -102,7 +131,13 @@ export const FilterSideBar = ({ productDataTransfer }) => {
                         <ul>
                           {items?.subcategories.map(subitem => {
                             return (
-                              <li key={subitem.category_id.toString()}>
+                              <li key={subitem.category_id.toString()} onClick={() => {
+                                console.log(678, brandId);
+                                queryFilter(catId,brandId,subitem.category_id)
+                                // router.push(
+                                //   `/category/accessories?id=${catId}&brandId=${brandId}&subCatId=${subitem.category_id}`,
+                                // );
+                              }}>
                                 {subitem.category_name}{' '}
                               </li>
                             );
@@ -120,7 +155,7 @@ export const FilterSideBar = ({ productDataTransfer }) => {
             <h6>PRICE</h6>
             <h6
               className={styles.close}
-              onClick={() => setPriceFilter([0, 500])}
+              onClick={() => setPriceFilter([])}
             >
               Clear
             </h6>
@@ -230,22 +265,33 @@ export const FilterSideBar = ({ productDataTransfer }) => {
                 </Form.Group>
                 <div className={`mt-3 ${styles.Checkbox}`}>
                   <div className={styles.checkBoxText}>
-                    {productData &&
-                      productData.length > 0 &&
-                      productData
-                        .find(items => items.category_id === Number(catId))
-                        .brands.map(item => (
-                          <div key={`brand-${item.brand_id}`} 
-                          onClick={() => {
-                            console.log(678, item.brand_id);
-                            router.push(
-                              `/category/accessories?id=${catId}&brandId=${item.brand_id}`,
-                            );
-                          }}
+                    {console.log(689,brandData)}
+                    {brandData &&
+                      brandData.length > 0 &&
+                      brandData
+                        .map(item => (
+                          <div
+                            key={`brand-${item.brand_id}`}
+                            onClick={() => {
+                              console.log(678, item.brand_id);
+                              // router.push(
+                              //   `/category/accessories?id=${catId}&brandId=${item.brand_id}&subCatId=${subCatId}`,
+                              console.log(69,subCatId)
+                              // );
+                              queryFilter(catId,item.brand_id,subCatId)
+                            }}
                           >
-                            <Checkbox
-                              label={item.brand_name}
-                            />
+                            <label htmlFor={item.brand_id}> 
+                            <input type="checkbox" title={item.brand_name} name="brand" id={item.brand_id} onChange={(e)=>{
+                              if(e.target.checked){
+                                queryFilter(catId,item.brand_id,subCatId)
+                              }else{
+                                queryFilter(catId,"",subCatId) 
+                              }
+                            }}/>
+                            {item.brand_name}
+                            </label>
+                            {/* <Checkbox label={item.brand_name} /> */}
                           </div>
                         ))}
                     {/* <Checkbox label="Nestle" />
@@ -261,6 +307,9 @@ export const FilterSideBar = ({ productDataTransfer }) => {
               <Accordion.Header>CUSTOMER RATINGS</Accordion.Header>
               <Accordion.Body>
                 <div className={styles.checkBoxText}>
+                  <Checkbox label="1" />
+                  <Checkbox label="2" />
+                  <Checkbox label="3" />
                   <Checkbox label="4" />
                   <Checkbox label="5" />
                 </div>

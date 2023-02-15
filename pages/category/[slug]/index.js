@@ -16,6 +16,8 @@ export default function Category() {
   const router = useRouter();
   const catagoryId = router?.query?.id;
   const brandId = router?.query?.brandId;
+  const subCatId = router?.query?.subCatId;
+
   const [drive, setDrive] = useState([null, null]);
   const wishlist = useSelector(state => state.products.wishlistProducts);
   const [sortByLabel, setSortByLabel] = useState('');
@@ -64,6 +66,7 @@ export default function Category() {
         user_id: user,
         category_id: catagoryId,
         brand_id: brandId,
+        sub_category_id: subCatId,
         min_price: drive[0],
         max_price: drive[1],
         sort_by: filterSortBy,
