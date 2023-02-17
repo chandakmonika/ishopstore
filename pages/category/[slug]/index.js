@@ -8,6 +8,11 @@ import { AppLayout, FilterSideBar, ProductMainCard } from '../../../components';
 import { getAllProductData } from '../../../redux/productSlice';
 import { Products } from '../../../services/Products';
 import { toast, ToastContainer } from 'react-toastify';
+// import styles from './index.module.css';
+// import Paginations from '../../components/pagination/pagination';
+
+import Paginations from '../../../components/pagination/pagination';
+
 export default function Category() {
   const [productData, setProductData] = useState([]);
   const [filterSortBy, setFilterSortBy] = useState(null);
@@ -17,8 +22,11 @@ export default function Category() {
   const catagoryId = router?.query?.id;
   const brandId = router?.query?.brandId;
   const subCatId = router?.query?.subCatId;
-
+  const [totalPage, setTotalPage] = useState(1);
   const [drive, setDrive] = useState([null, null]);
+  const pageNumber = useSelector(state => state.pagination.active);
+
+ 
   const wishlist = useSelector(state => state.products.wishlistProducts);
   const [sortByLabel, setSortByLabel] = useState('');
 
@@ -33,8 +41,18 @@ export default function Category() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    productDataTransfer();
+  }, [wishlist]);
+
+  // const productDataTransfer = index => {
+  //   setDrive(index);
+  // };
+
+  console.log(7879, drive, filterSortBy, filterOrderBy, brandId, catagoryId, subCatId, pageNumber)
+
+  useEffect(() => {
     fetchProductData();
-  }, [drive, filterSortBy, filterOrderBy,brandId]);
+  }, [drive, filterSortBy, filterOrderBy, brandId, catagoryId, subCatId, pageNumber]);
 
   function handleChange(event) {
     if (event.target.value == '0') {
@@ -71,9 +89,10 @@ export default function Category() {
         max_price: drive[1],
         sort_by: filterSortBy,
         order_by: filterOrderBy,
+        page: Number(pageNumber),
       });
+      setTotalPage(data.data.pages);
       setProductData(data?.data?.data);
-
       dispatch(getAllProductData(data?.data?.data));
     } catch (error) {
       toast.error(error);
@@ -98,7 +117,7 @@ export default function Category() {
                   <div className="d-flex justify-content-between">
                     <p className="d-flex gap-3">
                       <span>{sortByLabel}</span>
-                    </p>
+                    </p>product
                     <div className="d-flex gap-2 align-items-center">
                       <span className="text-nowrap">Sort By</span>
                       <FormSelect onChange={handleChange}>
@@ -116,6 +135,10 @@ export default function Category() {
                 <Row>
                   <ProductMainCard productData={productData} />
                 </Row>
+
+                <div style={{ display: 'flex', justifyContent: 'end' }}>
+                  <Paginations totalPage={totalPage} />
+                </div>
               </Col>
             </Row>
           </Container>

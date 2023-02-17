@@ -112,7 +112,7 @@ export const ProductMainCard = () => {
             >
               <div className={styles.wishListCard} key={item.product_id}>
                 <div className={`mb-3 text-center ${styles.image}`}>
-                  <img onError={(e)=> onErrorImage(e)} src={item.mediadata[0].http_url ? item.mediadata[0].http_url : "/images/default.jpg"} alt="Product Image" className={styles.wishlistImg}/>
+                  <img onError={(e)=> onErrorImage(e)} src={item.mediadata[0].http_url ? item.mediadata[0].http_url : "/images/default.jpg"} alt={"Product Image"} className={styles.wishlistImg}/>
                 </div>
                 <div className={styles.content}>
                   <h4>{item.product_name}</h4>

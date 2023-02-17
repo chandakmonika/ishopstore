@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Products } from '../../services/Products';
 import { AddToCart } from '../AddToCart';
@@ -9,6 +9,7 @@ import { addtoWishlist, removefromWishlist } from '../../redux/productSlice';
 export const Product = ({ data }) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state?.auth?.user?.user_id);
+  const[showResult,setShowResult] = useState([])
 
   const handleWishlistItem = isWishlisted => {
     return isWishlisted ? removeWishlist() : addWishlist();
@@ -60,9 +61,14 @@ export const Product = ({ data }) => {
       </div>
       <Link href={`/products/${data.product_name_slug}?id=${data.product_id}`}>
         <div>
+          {
+            data.price_discount && 
+
           <div className={styles.starImg}>
-            <span>{discount}</span>
+            <span>{data.price_discount}</span>
           </div>
+          }
+          
           <div className={styles.image}>
             <img src={data.mediadata[0].http_url} alt={name} />
           </div>

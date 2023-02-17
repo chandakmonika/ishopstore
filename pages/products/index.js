@@ -99,11 +99,11 @@ export default function Product() {
 
               <Col md={9}>
                 <div className={`mb-4`}>
-                  <p>Showing results for “Cereles”</p>
+                  <p>Showing results for “Cereles”</p>category
                   <div className="d-flex justify-content-between">
                     <p className="d-flex gap-3">
                       <span> Price - Low to High </span>
-                      <span> Price - High to Low </span>
+                      <span> Price - High to Low </span>vv
                     </p>
                     <div className="d-flex gap-2 align-items-center">
                       <span className="text-nowrap">Sort By</span>

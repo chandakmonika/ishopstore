@@ -129,6 +129,9 @@ label {
   color: #323436 !important;
   padding: 0.5rem 0.5rem;
 }
+.accordion-button[aria-expanded='true'] {
+  pointer-events: none;
+}
 .accordion-body {
   padding: 0.5rem 1rem;
 }
